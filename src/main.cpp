@@ -3,7 +3,7 @@
 
 void setup() {
   game_logic game;
-  int i = 3;
+  game.get_matrix().print();
 }
 
 void loop() {}

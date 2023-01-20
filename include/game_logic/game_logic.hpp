@@ -1,6 +1,6 @@
 #pragma once
 
-#include <cstdint>
+#include <Arduino.h>
 #include "detail.hpp"
 
 using namespace detail::constant;
@@ -21,14 +21,12 @@ enum figure : uint8_t {
 };
 
 /// @brief Матрица шашек
-struct matrix_figure {
+class matrix_figure {
   /// @brief Вставить один слой в матрице
   /// @param is_even Номер ячейки должны быть чётными
   /// @param height Координата высоты матрицы
   /// @param type_figure Сам тип фигуры для вставки
-  constexpr void insert_layer(bool is_even,
-                              uint8_t height,
-                              figure type_figure) {
+  void insert_layer(bool is_even, uint8_t height, figure type_figure) noexcept {
     for (auto w = 0; w != WIDTH_MATRIX; ++w)
       if (!is_even && w % 2 != 0)
         this->matrix[height][w] = type_figure;
@@ -36,8 +34,9 @@ struct matrix_figure {
         this->matrix[height][w] = type_figure;
   }
 
+ public:
   /// @brief Конструктор, который генерирует матрицу
-  constexpr matrix_figure() : matrix() {
+  matrix_figure() noexcept {
     for (auto h = 0; h != HEIGHT_MATRIX; ++h)
       for (auto w = 0; w != WIDTH_MATRIX; ++w)
         matrix[h][w] = figure::not_used;
@@ -52,7 +51,10 @@ struct matrix_figure {
     insert_layer(true, 5, black);
     insert_layer(false, 6, black);
     insert_layer(true, 7, black);
-    // TODO Проверить это
+  }
+
+  void print() noexcept {
+    Serial.println("print is worked!");
   }
 
   /// @brief Сама наша матрица
@@ -62,7 +64,9 @@ struct matrix_figure {
 /// @brief Вся логика игры в шашках
 class game_logic {
  public:
-  game_logic();
+  game_logic() noexcept;
+
+  matrix_figure& get_matrix() noexcept;
 
  private:
   matrix_figure matrix;
