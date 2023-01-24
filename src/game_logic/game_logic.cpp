@@ -1,10 +1,8 @@
-#include "game_logic/game_logic.hpp"
+#include "game_logic/game_logic.h"
 
-game_logic::game_logic() noexcept {
-  matrix_figure generated_matrix = matrix_figure();
-  this->matrix = generated_matrix;
-}
+using namespace game_logic;
+using namespace game_logic::matrix_figure;
 
-matrix_figure& game_logic::get_matrix() noexcept {
+MatrixFigure& GameLogic::GetMatrix() noexcept {
   return this->matrix;
 }

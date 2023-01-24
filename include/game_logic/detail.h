@@ -2,6 +2,7 @@
 
 #include <Arduino.h>
 
+namespace game_logic {
 namespace detail {
 
 namespace constant {
@@ -15,3 +16,4 @@ constexpr uint8_t WIDTH_MATRIX = 8;
 }  // namespace constant
 
 }  // namespace detail
+}
