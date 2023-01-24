@@ -7,7 +7,7 @@ bool connectWifi(char ssid, char password, int timeout){
         Serial.print(".");
         delay(1000);
         n++;
-        if(n==timeout) return false;
+        if(n==timeout) return false; break;
     }
-    return true;
+    if(n!=timeout) return true;
 }
