@@ -12,6 +12,10 @@ const char* pass1 = APPSK1;
 const char* ssid2 = APSSID2;
 const char* pass2 = APPSK2;
 
+const char* ApSsid = SSID;
+const char* ApPass = PASS;
+
+
 
 bool wifi;
 void setup() {
@@ -19,7 +23,7 @@ void setup() {
     if(!wifi) wifi = connectWifi(ssid1, pass1, TIMEOUT);
     if(!wifi) wifi = connectWifi(ssid2, pass2, TIMEOUT);
     if(!wifi) {
-        AP(ssid, pass);
+        AP(ApSsid, ApPass);
     }
 }
 

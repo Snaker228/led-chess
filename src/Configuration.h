@@ -8,6 +8,11 @@
 /*..............................................................LOCAL................................................................*/
 extern const char htmlFile[] PROGMEM;
 
+#ifndef SSID
+#define SSID                                                               "CHESS-BOARD_CONFIG"
+#define PASS                                                               "admin111"
+#endif
+
 #ifndef APSSID
 
 #define APSSID                                                             "SHACMATIE"
