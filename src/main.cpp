@@ -2,6 +2,9 @@
 #include "WiFi_Connect.h"
 #include "Configuration.h"
 #include "APStart.h"
+#include <FastLED.h>
+
+#define LED_PIN  3
 
 const char* ssid = APSSID;
 const char* pass = APPSK;
@@ -14,7 +17,6 @@ const char* pass2 = APPSK2;
 
 const char* ApSsid = SSID;
 const char* ApPass = PASS;
-
 
 
 bool wifi;
