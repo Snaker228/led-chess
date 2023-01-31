@@ -16,4 +16,4 @@ constexpr uint8_t WIDTH_MATRIX = 8;
 }  // namespace constant
 
 }  // namespace detail
-}
+}  // namespace game_logic

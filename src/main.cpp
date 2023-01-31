@@ -2,8 +2,14 @@
 #include "game_logic/game_logic.h"
 
 void setup() {
+  Serial.begin(921600);
+
   auto game_logic = game_logic::GameLogic();
   auto matrix = game_logic.GetMatrix();
 }
 
-void loop() {}
+void loop() {
+  auto game_logic = game_logic::GameLogic();
+  auto matrix = game_logic.GetMatrix();
+  matrix.Print();
+}

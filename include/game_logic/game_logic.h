@@ -12,11 +12,11 @@ using namespace detail::constant;
 class GameLogic {
  public:
   /// @brief Констуктор
-  constexpr GameLogic() : matrix(matrix_figure::GetGeneratedMatrixFigure()) {};
+  constexpr GameLogic() : matrix(matrix_figure::GetGeneratedMatrixFigure()){};
 
   matrix_figure::MatrixFigure& GetMatrix() noexcept;
 
  private:
   matrix_figure::MatrixFigure matrix;
 };
-}
+}  // namespace game_logic

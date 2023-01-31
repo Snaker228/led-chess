@@ -26,8 +26,8 @@ enum Figure : uint8_t {
 struct MatrixFigure {
   /// @brief Конструктор, который везде ставит `Figure::NotUsed`
   constexpr MatrixFigure() : figures{Figure::NotUsed} {
-    for (auto h = 0; h != HEIGHT_MATRIX; ++h)
-      for (auto w = 0; w != WIDTH_MATRIX; ++w)
+    for (auto h = 0; h < HEIGHT_MATRIX; ++h)
+      for (auto w = 0; w < WIDTH_MATRIX; ++w)
         this->figures[h][w] = Figure::NotUsed;
   }
 
@@ -45,16 +45,16 @@ namespace detail {
 /// @param type_figure Сам тип фигуры для вставки
 /// @warning Вам нужно использовать его вместе с объектом (из-за this)
 constexpr void InsertLayerForMatrixFigure(MatrixFigure& matrix,
-                           bool is_even,
-                           uint8_t height,
-                           Figure type_figure) noexcept {
-  for (auto w = 0; w != WIDTH_MATRIX; ++w)
+                                          bool is_even,
+                                          uint8_t height,
+                                          Figure type_figure) noexcept {
+  for (auto w = 0; w < WIDTH_MATRIX; ++w)
     if (!is_even && w % 2 != 0)
       matrix.figures[height][w] = type_figure;
     else if (is_even && w % 2 == 0)
       matrix.figures[height][w] = type_figure;
 }
-}
+}  // namespace detail
 
 /// @brief Получить уже генерированный (генерация происходит во время
 /// компиляции) шашки
@@ -75,5 +75,5 @@ constexpr MatrixFigure GetGeneratedMatrixFigure() {
 
   return matrix_figure;
 }
-};
-}
+};  // namespace matrix_figure
+}  // namespace game_logic
