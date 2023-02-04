@@ -1,17 +1,21 @@
 #include <ESP8266WiFi.h>
-#include <ESPAsyncTCP.h>
-#include <ESPAsyncWebServer.h>
+#include <ESP8266WebServer.h>
 #include "Configuration.h"
+#include <LittleFS.h>
 
+int SerPort = SERVERPORT;
 
-
-AsyncWebServer server(80);
+ESP8266WebServer server(SerPort);
 void AP(const char* ssid, const char* pass){
     WiFi.softAP(ssid, pass);
-    server.on("/", conf_chess);
+    server.on("/", [](){
+      File file = LittleFS.open("index.html", "r");
+      server.streamFile(file, "text/html");
+      file.close();
+      return ;
+    });
     server.begin();
-}
-
-void conf_chess(){
-    server.send(200, "text/html", htmlFile);
+    while(true){
+      server.handleClient();
+    }
 }

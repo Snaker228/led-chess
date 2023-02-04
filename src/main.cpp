@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include <LittleFS.h>
 #include "WiFi_Connect.h"
 #include "Configuration.h"
 #include "APStart.h"
@@ -22,6 +23,7 @@ const char* ApPass = PASS;
 
 
 void setup() {
+    LittleFS.begin();
     bool wifi;
     wifi = connectWifi(ssid, pass, TIMEOUT);
     if(!wifi) wifi = connectWifi(ssid1, pass1, TIMEOUT);

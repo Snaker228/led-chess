@@ -9,8 +9,9 @@
 extern const char htmlFile[] PROGMEM;
 
 #ifndef SSID
-#define SSID                                                               "CHESS-BOARD_CONFIG"
-#define PASS                                                               "admin111"
+#define SSID                                                               "CHESS-BOARD_CONFIG"             //Название точки доступа
+#define PASS                                                               "admin111"                       //Пароль
+#define IPADRESS                                                           192.168.0.1
 #endif
 
 #ifndef APSSID
