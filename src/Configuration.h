@@ -6,12 +6,11 @@
 */
 
 /*..............................................................LOCAL................................................................*/
-extern const char htmlFile[] PROGMEM;
-
 #ifndef SSID
+
 #define SSID                                                               "CHESS-BOARD_CONFIG"             //Название точки доступа
 #define PASS                                                               "admin111"                       //Пароль
-#define IPADRESS                                                           192.168.0.1
+#define IPADRESS                                                           192.168.0.1                      //Айпи нашего сервера в локальной сети(точка доступа)
 #endif
 
 #ifndef APSSID
@@ -19,18 +18,19 @@ extern const char htmlFile[] PROGMEM;
 #define APSSID                                                             "SHACMATIE"
 #define APPSK                                                              "12345678"
 
-#define APSSID1                                                            "Redmi 9"
-#define APPSK1                                                             "11111111"
+#define APSSID1                                                            "Redmi9"
+#define APPSK1                                                             ""
 
-#define APSSID2                                                            "TP-Link_EFF4"
-#define APPSK2                                                             "13197421"
+#define APSSID2                                                            "TP-Link_7B76"
+#define APPSK2                                                             "78217942"
 
-//Нужно реализовать подключение к нескольким сетям не подключился к одной за timeout  подключается к следеующей
+//Нужно реализовать подключение к нескольким сетям не подключился к одной за timeout  подключается к следующей
 
 #define TIMEOUT                                                            5              // в секундах
 #define INDICATOR_OF_NETWORK_STATUS                                        2
 #endif
 
+#define NUM_LEDS                                                           67
 #define matrixLed                                                          5                              
 
 /*............................................Update firmware into wifi configuration...............................................*/

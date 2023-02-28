@@ -1,37 +1,75 @@
 #include <Arduino.h>
 #include <LittleFS.h>
+#include <ESP8266WiFi.h>
 #include "WiFi_Connect.h"
 #include "Configuration.h"
 #include "APStart.h"
+#include "Adafruit_NeoPixel.h"
+#include "SD.h"
+#include "SPI.h"
 
-#define LED_PIN  3
+int led_pin = matrixLed;
 
-#define COLOR_ORDER GRB
-
-
-const char* ssid = APSSID;
-const char* pass = APPSK;
-
-const char* ssid1 = APSSID1;
-const char* pass1 = APPSK1;
-
-const char* ssid2 = APSSID2;
-const char* pass2 = APPSK2;
-
-const char* ApSsid = SSID;
-const char* ApPass = PASS;
-
+Adafruit_NeoPixel strip = Adafruit_NeoPixel(67, led_pin, NEO_GRB + NEO_KHZ800);
 
 void setup() {
-    LittleFS.begin();
+    //LittleFS.begin();
+    Serial.begin(115200);
+    strip.begin();
+        for (int i = 0; i < 35; i++) {              
+            strip.setPixelColor(i, strip.Color(0, 0, 0)); // Красный цвет. 
+        } 
+        strip.show();
+    if (!SD.begin(15)) {                                         //Если не удалось пдключиться к сд карте
+        Serial.println("initialization failed!");
+        SD_NOT_BEGIN();
+    } else {
+        SD_BEGIN();
+    }
+
+}
+
+void SD_BEGIN(){
+    
+}
+
+void SD_NOT_BEGIN(){
+    const char* ssid = APSSID;
+    const char* pass = APPSK;
+
+    const char* ssid1 = APSSID1;
+    const char* pass1 = APPSK1;
+
+    const char* ssid2 = APSSID2;
+    const char* pass2 = APPSK2;
+
+    const char* ApSsid = SSID;
+    const char* ApPass = PASS;
+
+
+
+
     bool wifi;
     wifi = connectWifi(ssid, pass, TIMEOUT);
     if(!wifi) wifi = connectWifi(ssid1, pass1, TIMEOUT);
     if(!wifi) wifi = connectWifi(ssid2, pass2, TIMEOUT);
     if(!wifi) {
+        for (int i = 0; i <35; i++) {              
+            strip.setPixelColor(i, strip.Color(255, 0, 0)); // Красный цвет. 
+        } 
+        strip.show();
         AP(ApSsid, ApPass);
     }
+    else{
+        for (int i = 0; i < 35; i++) { 
+            strip.setPixelColor(i, strip.Color(0, 0, 255)); // Синий цвет. 
+        } 
+        strip.show();
+    }
+
 }
 
 void loop() {
+        Serial.println(WiFi.localIP());
+    
 }
