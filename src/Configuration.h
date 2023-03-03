@@ -21,7 +21,7 @@
 #define APSSID1                                                            "Redmi9"
 #define APPSK1                                                             ""
 
-#define APSSID2                                                            "TP-Link_7B76"
+#define APSSID2                                                            "TP-Link_7B6"
 #define APPSK2                                                             "78217942"
 
 //Нужно реализовать подключение к нескольким сетям не подключился к одной за timeout  подключается к следующей

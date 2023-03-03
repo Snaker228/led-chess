@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include <LittleFS.h>
+#include "LittleFS.h"
 #include <ESP8266WiFi.h>
 #include "WiFi_Connect.h"
 #include "Configuration.h"
@@ -12,28 +12,12 @@ int led_pin = matrixLed;
 
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(67, led_pin, NEO_GRB + NEO_KHZ800);
 
-void setup() {
-    //LittleFS.begin();
-    Serial.begin(115200);
-    strip.begin();
-        for (int i = 0; i < 35; i++) {              
-            strip.setPixelColor(i, strip.Color(0, 0, 0)); // Красный цвет. 
-        } 
-        strip.show();
-    if (!SD.begin(15)) {                                         //Если не удалось пдключиться к сд карте
-        Serial.println("initialization failed!");
-        SD_NOT_BEGIN();
-    } else {
-        SD_BEGIN();
-    }
+
+void sD_BEGIN(){
 
 }
 
-void SD_BEGIN(){
-    
-}
-
-void SD_NOT_BEGIN(){
+void sD_NOT_BEGIN(){
     const char* ssid = APSSID;
     const char* pass = APPSK;
 
@@ -65,6 +49,23 @@ void SD_NOT_BEGIN(){
             strip.setPixelColor(i, strip.Color(0, 0, 255)); // Синий цвет. 
         } 
         strip.show();
+    }
+
+}
+
+void setup() {
+    LittleFS.begin();
+    Serial.begin(115200);
+    strip.begin();
+        for (int i = 0; i < 35; i++) {              
+            strip.setPixelColor(i, strip.Color(0, 0, 0)); // Красный цвет. 
+        } 
+        strip.show();
+    if (!SD.begin(15)) {                                         //Если не удалось пдключиться к сд карте
+        Serial.println("initialization failed!");
+        sD_NOT_BEGIN();
+    } else {
+        sD_BEGIN();
     }
 
 }
