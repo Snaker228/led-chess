@@ -35,8 +35,8 @@
 
 /*............................................Update firmware into wifi configuration...............................................*/
 
-#define OTAUSER                                                           ""
-#define OTAPASSWORD                                                       ""
+#define OTAUSER                                                           "admin"
+#define OTAPASSWORD                                                       "admin"
 #define OTAPATH                                                           "/firmware"
 #define SUBFOLDERDATA                                                     "/data"
 #define SERVERPORT                                                        80

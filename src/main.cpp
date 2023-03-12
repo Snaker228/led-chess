@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include "Servers.h"
 #include "LittleFS.h"
 #include <ESP8266WiFi.h>
 #include "WiFi_Connect.h"
@@ -38,19 +39,19 @@ void sD_NOT_BEGIN(){
     if(!wifi) wifi = connectWifi(ssid1, pass1, TIMEOUT);
     if(!wifi) wifi = connectWifi(ssid2, pass2, TIMEOUT);
     if(!wifi) {
-        for (int i = 0; i <35; i++) {              
-            strip.setPixelColor(i, strip.Color(255, 0, 0)); // Красный цвет. 
-        } 
-        strip.show();
-        AP(ApSsid, ApPass);
+        // for (int i = 0; i <35; i++) {              
+        //     strip.setPixelColor(i, strip.Color(255, 0, 0)); // Красный цвет. 
+        // } 
+        // strip.show();
+        Serial.println("CoHHeCD");
+        startAP(ApSsid, ApPass, WiFi);
     }
-    else{
+    if(wifi){
         for (int i = 0; i < 35; i++) { 
             strip.setPixelColor(i, strip.Color(0, 0, 255)); // Синий цвет. 
         } 
         strip.show();
     }
-
 }
 
 void setup() {
@@ -67,7 +68,7 @@ void setup() {
     } else {
         sD_BEGIN();
     }
-
+  servers();
 }
 
 void loop() {
