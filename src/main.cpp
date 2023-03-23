@@ -2,6 +2,7 @@
 #include "Servers.h"
 #include "LittleFS.h"
 #include <ESP8266WiFi.h>
+#include <ESP8266WebServer.h>
 #include "WiFi_Connect.h"
 #include "Configuration.h"
 #include "APStart.h"
@@ -68,10 +69,10 @@ void setup() {
     } else {
         sD_BEGIN();
     }
-  servers();
+    servers();
 }
 
 void loop() {
-        Serial.println(WiFi.localIP());
-    
+    Serial.println(WiFi.localIP());
+    server.handleClient();
 }
