@@ -15,8 +15,8 @@
 
 #ifndef APSSID
 
-#define APSSID                                                             "SHACMATIE"
-#define APPSK                                                              "12345678"
+#define APSSID                                                             "Coworking"
+#define APPSK                                                              "Kvant1234"
 
 #define APSSID1                                                            "Redmi9"
 #define APPSK1                                                             ""
@@ -26,6 +26,7 @@
 
 //Нужно реализовать подключение к нескольким сетям не подключился к одной за timeout  подключается к следующей
 
+#define TIMERESPONSE                                                       60
 #define TIMEOUT                                                            5              // в секундах
 #define INDICATOR_OF_NETWORK_STATUS                                        2
 #endif
