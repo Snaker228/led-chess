@@ -15,19 +15,19 @@
 
 #ifndef APSSID
 
-#define APSSID                                                             "Coworking"
-#define APPSK                                                              "Kvant1234"
+#define APSSID                                                             "AndroidAP78B7"
+#define APPSK                                                              "fnfn7206"
 
 #define APSSID1                                                            "Redmi9"
 #define APPSK1                                                             ""
 
-#define APSSID2                                                            "TP-Link_7B6"
+#define APSSID2                                                            "TP-Link_7B76"
 #define APPSK2                                                             "78217942"
 
 //Нужно реализовать подключение к нескольким сетям не подключился к одной за timeout  подключается к следующей
 
 #define TIMERESPONSE                                                       60
-#define TIMEOUT                                                            5              // в секундах
+#define TIMEOUT                                                            10              // в секундах
 #define INDICATOR_OF_NETWORK_STATUS                                        2
 #endif
 

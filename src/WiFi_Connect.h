@@ -29,6 +29,11 @@ bool connectWifi(const char* ssid, const char* password, int timeout)
 
 void sdnebegin(){
     strip.begin();
+    for (int i = 0; i <35; i++) {              
+        strip.setPixelColor(i, strip.Color(255, 255, 255)); // Белый цвет. 
+    } 
+    strip.setBrightness(90);
+    strip.show();
     const char* ssid = APSSID;
     const char* pass = APPSK;
 
@@ -49,6 +54,7 @@ void sdnebegin(){
         for (int i = 0; i <35; i++) {              
             strip.setPixelColor(i, strip.Color(255, 0, 0)); // Красный цвет. 
         } 
+        strip.setBrightness(90);
         strip.show();
         Serial.println("CoHHeCD");
         WiFi.softAP(ApSsid, ApPass);
@@ -57,6 +63,8 @@ void sdnebegin(){
         for (int i = 0; i < 35; i++) { 
             strip.setPixelColor(i, strip.Color(0, 0, 255)); // Синий цвет. 
         } 
+        strip.setBrightness(170);
         strip.show();
+        strip.setBrightness(170);
     }
 }
