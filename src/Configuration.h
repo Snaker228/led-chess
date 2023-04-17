@@ -15,7 +15,7 @@
 
 #ifndef APSSID
 
-#define APSSID                                                             "AndroidAP78B7"
+#define APSSID                                                             "AndroidA78B7"
 #define APPSK                                                              "fnfn7206"
 
 #define APSSID1                                                            "Redmi9"
@@ -26,8 +26,8 @@
 
 //Нужно реализовать подключение к нескольким сетям не подключился к одной за timeout  подключается к следующей
 
-#define TIMERESPONSE                                                       60
-#define TIMEOUT                                                            10              // в секундах
+#define TIMERESPONSE                                                       1
+#define TIMEOUT                                                            15              // в секундах
 #define INDICATOR_OF_NETWORK_STATUS                                        2
 #endif
 
